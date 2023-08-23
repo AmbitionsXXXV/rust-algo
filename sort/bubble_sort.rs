@@ -63,4 +63,5 @@ mod tests {
 pub fn main(){
     let mut nums = [ 4, 1, 3, 1, 5, 2 ];
     bubble_sort(&mut nums);
+    println!("{:?}", nums);
 }
