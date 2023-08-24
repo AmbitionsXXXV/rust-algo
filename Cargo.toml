@@ -22,4 +22,8 @@ path = "sort/bucket_sort.rs"
 name = "cocktail_shaker_sort"
 path = "sort/cocktail_shaker_sort.rs"
 
+[[bin]]
+name = "insertion_sort"
+path = "sort/insertion_sort.rs"
+
 [dependencies]
