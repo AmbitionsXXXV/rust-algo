@@ -1,3 +1,5 @@
+mod insertion_sort;
+
 pub fn main() {}
 
 // 时间复杂度 O(n + k), n: 输入数组的长度，k: 桶的数量
@@ -24,6 +26,7 @@ pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
 
     // 遍历每个桶 bucket，对其中的元素进行排序，这里使用了内置的排序方法 sort_by
     for bucket in buckets.iter_mut() {
+        // insertion_sort::insertion_sort(bucket);
         // 使用任何排序方法都可以，这里使用内置的排序方法
         bucket.sort_by(|a, b| a.partial_cmp(b).unwrap());
     }
