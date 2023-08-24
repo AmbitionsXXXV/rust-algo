@@ -20,7 +20,7 @@ pub fn heap_sort<T: PartialOrd>(arr: &mut [T]) {
     // 每轮循环将堆顶元素（也就是最大元素）放到最后
     for i in (1..size).rev() {
         arr.swap(0, i);
-        // 恢复大根堆
+        // 恢复最大堆
         heapify(arr, 0, i);
     }
 }
