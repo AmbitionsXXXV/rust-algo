@@ -38,4 +38,8 @@ path = "src/sorting/counting_sort.rs"
 name = "gnome_sort"
 path = "src/sorting/gnome_sort.rs"
 
+[[bin]]
+name = "heap_sort"
+path = "src/sorting/heap_sort.rs"
+
 [dependencies]
