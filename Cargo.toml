@@ -42,4 +42,8 @@ path = "src/sorting/gnome_sort.rs"
 name = "heap_sort"
 path = "src/sorting/heap_sort.rs"
 
+[[bin]]
+name = "merge_sort"
+path = "src/sorting/merge_sort.rs"
+
 [dependencies]
