@@ -41,7 +41,7 @@ mod tests {
 
     #[test]
     fn descending() {
-        ///descending
+        // descending
         let mut ve1 = vec![6, 5, 4, 3, 2, 1];
 
         comb_sort(&mut ve1);
