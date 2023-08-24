@@ -1,14 +1,12 @@
 /* 冒泡排序 */
-fn bubble_sort_without_flag(nums: &mut [i32]) {
+pub fn bubble_sort_without_flag<T: PartialOrd>(arr: &mut [T]) {
     // 外循环：未排序区间为 [0, i]
-    for i in (1..nums.len()).rev() {
+    for i in (1..arr.len()).rev() {
         // 内循环：将未排序区间 [0, i] 中的最大元素交换至该区间的最右端
         for j in 0..i {
-            if nums[j] > nums[j + 1] {
-                // 交换 nums[j] 与 nums[j + 1]
-                let tmp = nums[j];
-                nums[j] = nums[j + 1];
-                nums[j + 1] = tmp;
+            if arr[j] > arr[j + 1] {
+                // 交换 arr[j] 与 arr[j + 1]
+                arr.swap(j, j + 1);
             }
         }
     }
@@ -49,12 +47,28 @@ mod tests {
         bubble_sort(&mut empty_vec);
         assert_eq!(empty_vec, Vec::<String>::new());
     }
+
+    #[test]
+    fn test_empty_vec_without_flag() {
+        let mut empty_vec: Vec<String> = vec![];
+        bubble_sort_without_flag(&mut empty_vec);
+        assert_eq!(empty_vec, Vec::<String>::new());
+    }
+
     #[test]
     fn test_number_vec() {
         let mut vec = vec![7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
         bubble_sort(&mut vec);
         assert_eq!(vec, vec![7, 9, 23, 30, 44, 49, 58, 72, 73, 78]);
     }
+
+    #[test]
+    fn test_number_vec_without_flag() {
+        let mut vec = vec![7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
+        bubble_sort_without_flag(&mut vec);
+        assert_eq!(vec, vec![7, 9, 23, 30, 44, 49, 58, 72, 73, 78]);
+    }
+
     #[test]
     fn test_string_vec() {
         let mut vec = vec![
@@ -77,7 +91,7 @@ mod tests {
 }
 
 pub fn main() {
-    let mut nums = [4, 1, 3, 1, 5, 2];
-    bubble_sort(&mut nums);
-    println!("{:?}", nums);
+    let mut arr = [4, 1, 3, 1, 5, 2];
+    bubble_sort(&mut arr);
+    println!("{:?}", arr);
 }
