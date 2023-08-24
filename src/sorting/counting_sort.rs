@@ -80,3 +80,5 @@ mod test {
         assert!(is_sorted(&ve2));
     }
 }
+
+fn main() {}
