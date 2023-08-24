@@ -1,3 +1,4 @@
+mod counting_sort;
 mod insertion_sort;
 
 pub fn main() {}
@@ -46,15 +47,7 @@ pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    pub fn is_sorted(arr: &[usize]) -> bool {
-        for i in 1..arr.len() {
-            if arr[i] < arr[i - 1] {
-                return false;
-            }
-        }
-        true
-    }
+    use counting_sort::is_sorted;
 
     #[test]
     fn empty() {
