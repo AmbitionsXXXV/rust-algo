@@ -1,3 +1,19 @@
+/* 冒泡排序 */
+fn bubble_sort_without_flag(nums: &mut [i32]) {
+    // 外循环：未排序区间为 [0, i]
+    for i in (1..nums.len()).rev() {
+        // 内循环：将未排序区间 [0, i] 中的最大元素交换至该区间的最右端
+        for j in 0..i {
+            if nums[j] > nums[j + 1] {
+                // 交换 nums[j] 与 nums[j + 1]
+                let tmp = nums[j];
+                nums[j] = nums[j + 1];
+                nums[j + 1] = tmp;
+            }
+        }
+    }
+}
+
 // PartialOrd 用于实现对于可比较类型的值进行有序比较
 pub fn bubble_sort<T: PartialOrd>(arr: &mut [T]) {
     if arr.len() <= 1 {
@@ -60,8 +76,8 @@ mod tests {
     }
 }
 
-pub fn main(){
-    let mut nums = [ 4, 1, 3, 1, 5, 2 ];
+pub fn main() {
+    let mut nums = [4, 1, 3, 1, 5, 2];
     bubble_sort(&mut nums);
     println!("{:?}", nums);
 }
