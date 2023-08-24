@@ -6,24 +6,28 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [workspace]
-#members = ["sort"]
+#members = ["sorting"]
 
 # cargo run --bin bubble_sort
 # cargo test --bin bubble_sort
 [[bin]]
 name = "bubble_sort"
-path = "sort/bubble_sort.rs"
+path = "sorting/bubble_sort.rs"
 
 [[bin]]
 name = "bucket_sort"
-path = "sort/bucket_sort.rs"
+path = "sorting/bucket_sort.rs"
 
 [[bin]]
 name = "cocktail_shaker_sort"
-path = "sort/cocktail_shaker_sort.rs"
+path = "sorting/cocktail_shaker_sort.rs"
 
 [[bin]]
 name = "insertion_sort"
-path = "sort/insertion_sort.rs"
+path = "sorting/insertion_sort.rs"
+
+[[bin]]
+name = "comp_sort"
+path = "sorting/comb_sort.rs"
 
 [dependencies]
