@@ -18,4 +18,8 @@ path = "sort/bubble_sort.rs"
 name = "bucket_sort"
 path = "sort/bucket_sort.rs"
 
+[[bin]]
+name = "cocktail_shaker_sort"
+path = "sort/cocktail_shaker_sort.rs"
+
 [dependencies]
