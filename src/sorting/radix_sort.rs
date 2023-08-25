@@ -91,3 +91,9 @@ mod tests {
         assert!(is_sorted(&v));
     }
 }
+
+fn main() {
+    let mut arr = [7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
+    radix_sort(&mut arr);
+    println!("{:?}", arr);
+}
