@@ -21,3 +21,5 @@ pub mod odd_even_sort;
 pub mod quick_sort;
 
 pub mod radix_sort;
+
+pub mod selection_sort;
