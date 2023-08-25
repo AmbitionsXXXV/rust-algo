@@ -53,7 +53,7 @@ mod tests {
 
     #[test]
     fn ascending() {
-        ///pre-sorted
+        // pre-sorted
         let mut ve2 = vec![1, 2, 3, 4, 5, 6];
 
         comb_sort(&mut ve2);
