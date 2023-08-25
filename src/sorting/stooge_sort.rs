@@ -124,3 +124,9 @@ mod test {
         }
     }
 }
+
+fn main() {
+    let mut arr = [7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
+    stooge_sort(&mut arr);
+    println!("{:?}", arr);
+}
