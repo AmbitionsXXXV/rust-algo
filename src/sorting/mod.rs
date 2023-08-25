@@ -15,3 +15,5 @@ pub mod gnome_sort;
 pub mod heap_sort;
 
 pub mod merge_sort;
+
+pub mod odd_even_sort;
