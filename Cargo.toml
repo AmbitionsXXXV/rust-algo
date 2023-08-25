@@ -50,4 +50,9 @@ path = "src/sorting/merge_sort.rs"
 name = "odd_even_sort"
 path = "src/sorting/odd_even_sort.rs"
 
+[[bin]]
+name = "quick_sort"
+path = "src/sorting/quick_sort.rs"
+
 [dependencies]
+rand = "0.8.5"
