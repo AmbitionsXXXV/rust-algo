@@ -71,7 +71,9 @@ where
     // Only perform sorting when there are more than one elements
     // 只有在元素数量大于 1 时才执行排序
     if lo < hi {
+        // 当前子数组的中间索引
         let mid = lo + ((hi - lo) >> 1);
+
         merge_sort_range(arr, lo, mid);
         merge_sort_range(arr, mid + 1, hi);
         merge_two_arrays(arr, lo, mid, hi);
