@@ -70,5 +70,9 @@ path = "src/sorting/shell_sort.rs"
 name = "stooge_sort"
 path = "src/sorting/stooge_sort.rs"
 
+[[bin]]
+name = "tim_sort"
+path = "src/sorting/tim_sort.rs"
+
 [dependencies]
 rand = "0.8.5"

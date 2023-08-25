@@ -27,3 +27,5 @@ pub mod selection_sort;
 pub mod shell_sort;
 
 pub mod stooge_sort;
+
+pub mod tim_sort;
