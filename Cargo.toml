@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [workspace]
-#members = ["sorting"]
+# members = ["sorting"]
 
 # cargo run --bin bubble_sort
 # cargo test --bin bubble_sort
@@ -53,6 +53,10 @@ path = "src/sorting/odd_even_sort.rs"
 [[bin]]
 name = "quick_sort"
 path = "src/sorting/quick_sort.rs"
+
+[[bin]]
+name = "radix_sort"
+path = "src/sorting/radix_sort.rs"
 
 [dependencies]
 rand = "0.8.5"
