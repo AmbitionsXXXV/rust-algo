@@ -62,5 +62,9 @@ path = "src/sorting/radix_sort.rs"
 name = "selection_sort"
 path = "src/sorting/selection_sort.rs"
 
+[[bin]]
+name = "shell_sort"
+path = "src/sorting/shell_sort.rs"
+
 [dependencies]
 rand = "0.8.5"
