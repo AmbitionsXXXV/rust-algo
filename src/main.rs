@@ -1,3 +1,1 @@
-use rand;
-
 fn main() {}
