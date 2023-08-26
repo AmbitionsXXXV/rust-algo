@@ -82,5 +82,9 @@ path = "src/string/reverse.rs"
 name = "burrows_wheeler_transform"
 path = "src/string/burrows_wheeler_transform.rs"
 
+[[bin]]
+name = "knuth_morris_pratt"
+path = "src/string/knuth_morris_pratt.rs"
+
 [dependencies]
 rand = "0.8.5"
