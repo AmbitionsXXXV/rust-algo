@@ -192,3 +192,10 @@ mod tests {
         assert_eq!(index, vec![]);
     }
 }
+
+fn main() {
+    let text = "ABABDABACDABABCABAB";
+    let pattern = "ABABCABAB";
+    let indices = knuth_morris_pratt(text.to_owned(), pattern.to_owned());
+    assert_eq!(indices, vec![10]);
+}
