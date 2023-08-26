@@ -78,5 +78,9 @@ path = "src/sorting/tim_sort.rs"
 name = "reverse"
 path = "src/string/reverse.rs"
 
+[[bin]]
+name = "burrows_wheeler_transform"
+path = "src/string/burrows_wheeler_transform.rs"
+
 [dependencies]
 rand = "0.8.5"
