@@ -74,5 +74,9 @@ path = "src/sorting/stooge_sort.rs"
 name = "tim_sort"
 path = "src/sorting/tim_sort.rs"
 
+[[bin]]
+name = "reverse"
+path = "src/string/reverse.rs"
+
 [dependencies]
 rand = "0.8.5"
