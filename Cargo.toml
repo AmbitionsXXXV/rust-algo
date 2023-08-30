@@ -90,5 +90,9 @@ path = "src/string/knuth_morris_pratt.rs"
 name = "manacher"
 path = "src/string/manacher.rs"
 
+[[bin]]
+name = "rabin_karp"
+path = "src/string/rabin_karp.rs"
+
 [dependencies]
 rand = "0.8.5"
