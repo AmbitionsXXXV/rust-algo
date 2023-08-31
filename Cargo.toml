@@ -94,5 +94,9 @@ path = "src/string/manacher.rs"
 name = "rabin_karp"
 path = "src/string/rabin_karp.rs"
 
+[[bin]]
+name = "binary_search"
+path = "src/search/binary_search.rs"
+
 [dependencies]
 rand = "0.8.5"
