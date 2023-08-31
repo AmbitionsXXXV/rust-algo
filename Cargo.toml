@@ -5,9 +5,6 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[workspace]
-# members = ["sorting"]
-
 # cargo run --bin bubble_sort
 # cargo test --bin bubble_sort
 [[bin]]
