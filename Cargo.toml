@@ -95,5 +95,9 @@ path = "src/string/rabin_karp.rs"
 name = "binary_search"
 path = "src/search/binary_search.rs"
 
+[[bin]]
+name = "binary_search_rec"
+path = "src/search/binary_search_rec.rs"
+
 [dependencies]
 rand = "0.8.5"
