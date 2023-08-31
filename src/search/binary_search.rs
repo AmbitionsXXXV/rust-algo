@@ -125,3 +125,5 @@ mod tests {
         assert_eq!(index, None);
     }
 }
+
+fn main() {}
