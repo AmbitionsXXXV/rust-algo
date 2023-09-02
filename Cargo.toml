@@ -103,5 +103,9 @@ path = "src/search/binary_search_rec.rs"
 name = "kth_smallest"
 path = "src/search/kth_smallest.rs"
 
+[[bin]]
+name = "linear_search"
+path = "src/search/linear_search.rs"
+
 [dependencies]
 rand = "0.8.5"
