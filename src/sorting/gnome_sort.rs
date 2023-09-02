@@ -1,41 +1,41 @@
-use std::cmp;
+pub mod gnome_sort {
+    /// 地精排序（Gnome Sort），也称为Stupid Sort或Bogo Sort，是一种简单但非常低效的排序算法。它通过不断比较相邻的元素并交换它们，直到达到正确的顺序为止
+    ///
+    /// # Arguments
+    ///
+    /// * `arr`:
+    ///
+    /// returns: Vec<T, Global>
+    pub fn gnome_sort<T>(arr: &[T]) -> Vec<T>
+    where
+        T: PartialEq + PartialOrd + Clone,
+    {
+        let mut arr = arr.to_vec();
+        let mut i: usize = 1;
+        let mut j: usize = 2;
 
-/// 地精排序（Gnome Sort），也称为Stupid Sort或Bogo Sort，是一种简单但非常低效的排序算法。它通过不断比较相邻的元素并交换它们，直到达到正确的顺序为止
-///
-/// # Arguments
-///
-/// * `arr`:
-///
-/// returns: Vec<T, Global>
-pub fn gnome_sort<T>(arr: &[T]) -> Vec<T>
-where
-    T: cmp::PartialEq + cmp::PartialOrd + Clone,
-{
-    let mut arr = arr.to_vec();
-    let mut i: usize = 1;
-    let mut j: usize = 2;
-
-    while i < arr.len() {
-        if arr[i - 1] < arr[i] {
-            i = j;
-            j = i + 1;
-        } else {
-            arr.swap(i - 1, i);
-            i -= 1;
-
-            if i == 0 {
+        while i < arr.len() {
+            if arr[i - 1] < arr[i] {
                 i = j;
-                j += 1;
+                j = i + 1;
+            } else {
+                arr.swap(i - 1, i);
+                i -= 1;
+
+                if i == 0 {
+                    i = j;
+                    j += 1;
+                }
             }
         }
-    }
 
-    arr
+        arr
+    }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::gnome_sort::gnome_sort;
 
     #[test]
     fn basic() {
@@ -73,3 +73,5 @@ mod tests {
         assert_eq!(res, vec!["", "", "", "a", "b", "c"]);
     }
 }
+
+fn main() {}

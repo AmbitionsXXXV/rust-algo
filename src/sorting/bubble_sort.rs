@@ -1,46 +1,51 @@
-/* 冒泡排序 */
-pub fn bubble_sort_without_flag<T: PartialOrd>(arr: &mut [T]) {
-    // 外循环：未排序区间为 [0, i]
-    for i in (1..arr.len()).rev() {
-        // 内循环：将未排序区间 [0, i] 中的最大元素交换至该区间的最右端
-        for j in 0..i {
-            if arr[j] > arr[j + 1] {
-                // 交换 arr[j] 与 arr[j + 1]
-                arr.swap(j, j + 1);
+use crate::bubble_sort::bubble_sort;
+
+pub mod bubble_sort {
+    /* 冒泡排序 */
+    pub fn bubble_sort_without_flag<T: PartialOrd>(arr: &mut [T]) {
+        // 外循环：未排序区间为 [0, i]
+        for i in (1..arr.len()).rev() {
+            // 内循环：将未排序区间 [0, i] 中的最大元素交换至该区间的最右端
+            for j in 0..i {
+                if arr[j] > arr[j + 1] {
+                    // 交换 arr[j] 与 arr[j + 1]
+                    arr.swap(j, j + 1);
+                }
             }
         }
     }
-}
 
-// PartialOrd 用于实现对于可比较类型的值进行有序比较
-pub fn bubble_sort<T: PartialOrd>(arr: &mut [T]) {
-    if arr.len() <= 1 {
-        return;
-    }
-
-    let size = arr.len();
-
-    for i in 0..(size - 1) {
-        // 记录是否有交换发生,有助于特殊情况下降低时间复杂度
-        let mut swapped = false;
-
-        for j in 1..(size - i) {
-            if arr[j - 1] > arr[j] {
-                arr.swap(j - 1, j);
-                swapped = true;
-            }
+    // PartialOrd 用于实现对于可比较类型的值进行有序比较
+    pub fn bubble_sort<T: PartialOrd>(arr: &mut [T]) {
+        if arr.len() <= 1 {
+            return;
         }
 
-        // 如果没有交换发生，说明已经排好序了
-        if !swapped {
-            break;
+        let size = arr.len();
+
+        for i in 0..(size - 1) {
+            // 记录是否有交换发生,有助于特殊情况下降低时间复杂度
+            let mut swapped = false;
+
+            for j in 1..(size - i) {
+                if arr[j - 1] > arr[j] {
+                    arr.swap(j - 1, j);
+                    swapped = true;
+                }
+            }
+
+            // 如果没有交换发生，说明已经排好序了
+            if !swapped {
+                break;
+            }
         }
     }
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::bubble_sort::{bubble_sort, bubble_sort_without_flag};
+
     #[test]
     fn test_empty_vec() {
         let mut empty_vec: Vec<String> = vec![];
