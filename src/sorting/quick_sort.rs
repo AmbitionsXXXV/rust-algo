@@ -46,20 +46,37 @@ pub mod quick_sort {
         }
     }
 
-    /// 将可变切片围绕基准元素进行分区，确保左侧元素较小，右侧元素较大。
+    /// 辅助函数，使用快速选择算法查找第 k 小元素。
     ///
-    /// Partitions a mutable slice around a pivot element, ensuring elements on the left are smaller and elements on the right are larger.
+    /// Helper function that finds the kth smallest element using the QuickSelect algorithm.
+    /// This function searches for the kth smallest element within the given slice in the
+    /// range from lo to hi.
     ///
-    /// # 参数 (Arguments)
+    /// 这个函数在给定的切片中查找第 k 小元素，从 lo 到 hi 的范围内进行查找。
     ///
-    /// * `arr`: 待分区的可变切片的引用。 (A mutable reference to the slice to be partitioned.)
-    /// * `lo`: 分区范围的低索引。 (The low index of the range to be partitioned.)
-    /// * `hi`: 分区范围的高索引。 (The high index of the range to be partitioned.)
+    /// # 参数 (Parameters)
+    /// - `input`: 可变切片，包含待查找第 k 小元素的元素。 (Mutable slice containing elements to find the kth smallest element from.)
+    /// - `k`: 要查找的第 k 小元素的位置。 (The position of the kth smallest element to find.)
+    /// - `lo`: 当前查找范围的起始索引。 (The starting index of the current search range.)
+    /// - `hi`: 当前查找范围的结束索引。 (The ending index of the current search range.)
     ///
-    /// # 返回 (Returns)
+    /// # 返回值 (Returns)
+    /// - 找到第 k 小元素时，返回元素的值。 (Returns the value of the kth smallest element when found.)
     ///
-    /// 分区完成后基准元素的最终索引。 (The final index of the pivot element after partitioning.)
+    /// # 算法复杂度 (Algorithm Complexity)
+    /// - 平均情况下，时间复杂度为 O(n)，其中 n 是切片的大小。 (Average-case time complexity is O(n), where n is the size of the slice.)
+    /// - 最坏情况下，时间复杂度为 O(n^2)。但通过选择合适的主元素和随机化，最坏情况
+    ///   可以避免。 (Worst-case time complexity is O(n^2). However, this can be mitigated by selecting
+    ///   a suitable pivot element and applying randomization.)
     ///
+    /// # 注意事项 (Note)
+    /// - 这个函数会修改输入切片以进行排序。 (This function modifies the input slice for sorting purposes.)
+    ///
+    /// # 复杂度 (Complexity)
+    /// Omitted detailed comments about the partitioning implementation as it is not the primary focus of this function.
+    /// This function performs the partitioning operation for the QuickSelect algorithm.
+    /// Time Complexity: O(n)
+    /// Space Complexity: O(1)
     pub fn partition<T: PartialOrd>(arr: &mut [T], lo: usize, hi: usize) -> usize {
         // 默认选择 `lo` 作为基准 (Default to choosing `lo` as the pivot)
         let pivot = lo;
