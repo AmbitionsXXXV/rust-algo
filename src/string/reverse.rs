@@ -61,34 +61,34 @@ pub fn main() {}
 ///
 /// 空间复杂度也是O(n)，因为保存反转后的字符所创建的新字符串需要的额外内存与输入字符串的长度成比例。
 pub fn reverse(text: &str) -> String {
-    // 获取输入字符串的字符迭代器
-    // Obtain an iterator over the characters of the input string
-    let char_iterator = text.chars();
+  // 获取输入字符串的字符迭代器
+  // Obtain an iterator over the characters of the input string
+  let char_iterator = text.chars();
 
-    // 将反转后的字符收集到一个新的字符串中
-    // Reverse the order of characters using the `rev()` method
-    let reversed_chars = char_iterator.rev();
+  // 将反转后的字符收集到一个新的字符串中
+  // Reverse the order of characters using the `rev()` method
+  let reversed_chars = char_iterator.rev();
 
-    // 将反转后的字符收集到一个新的字符串中
-    // Collect the reversed characters into a new String
-    let reversed_text = reversed_chars.collect();
+  // 将反转后的字符收集到一个新的字符串中
+  // Collect the reversed characters into a new String
+  let reversed_text = reversed_chars.collect();
 
-    // 返回反转后的字符串
-    // Return the reversed string
-    reversed_text
+  // 返回反转后的字符串
+  // Return the reversed string
+  reversed_text
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+  use super::*;
 
-    #[test]
-    fn test_simple() {
-        assert_eq!(reverse("racecar"), "racecar");
-    }
+  #[test]
+  fn test_simple() {
+    assert_eq!(reverse("racecar"), "racecar");
+  }
 
-    #[test]
-    fn test_sentence() {
-        assert_eq!(reverse("step on no pets"), "step on no pets");
-    }
+  #[test]
+  fn test_sentence() {
+    assert_eq!(reverse("step on no pets"), "step on no pets");
+  }
 }

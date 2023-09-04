@@ -107,5 +107,9 @@ path = "src/search/kth_smallest.rs"
 name = "linear_search"
 path = "src/search/linear_search.rs"
 
+[[bin]]
+name = "bellman_ford"
+path = "src/graph/bellman_ford.rs"
+
 [dependencies]
 rand = "0.8.5"
