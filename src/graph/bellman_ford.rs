@@ -149,18 +149,17 @@ pub mod bellman_ford {
 
     Some(ans)
   }
+
+  pub fn add_edge<V: Ord + Copy, E: Ord>(graph: &mut Graph<V, E>, v1: V, v2: V, c: E) {
+    graph.entry(v1).or_insert_with(BTreeMap::new).insert(v2, c);
+    graph.entry(v2).or_insert_with(BTreeMap::new);
+  }
 }
 
 #[cfg(test)]
 mod tests {
+  use super::bellman_ford::{add_edge, bellman_ford, Graph};
   use std::collections::BTreeMap;
-
-  use crate::bellman_ford::{bellman_ford, Graph};
-
-  fn add_edge<V: Ord + Copy, E: Ord>(graph: &mut Graph<V, E>, v1: V, v2: V, c: E) {
-    graph.entry(v1).or_insert_with(BTreeMap::new).insert(v2, c);
-    graph.entry(v2).or_insert_with(BTreeMap::new);
-  }
 
   #[test]
   fn single_vertex() {
