@@ -158,8 +158,9 @@ pub mod bellman_ford {
 
 #[cfg(test)]
 mod tests {
-  use super::bellman_ford::{add_edge, bellman_ford, Graph};
   use std::collections::BTreeMap;
+
+  use super::bellman_ford::{add_edge, bellman_ford, Graph};
 
   #[test]
   fn single_vertex() {
@@ -257,40 +258,50 @@ mod tests {
     add_edge(&mut graph, 3, 4, 9);
     add_edge(&mut graph, 4, 0, 3);
     add_edge(&mut graph, 4, 2, 7);
+
     let mut dists_0 = BTreeMap::new();
     dists_0.insert(0, None);
     dists_0.insert(1, Some((2, 2)));
     dists_0.insert(2, Some((3, 4)));
     dists_0.insert(3, Some((0, 7)));
     dists_0.insert(4, Some((1, -2)));
+
     assert_eq!(bellman_ford(&graph, &0), Some(dists_0));
+
     let mut dists_1 = BTreeMap::new();
     dists_1.insert(0, Some((4, -1)));
     dists_1.insert(1, None);
     dists_1.insert(2, Some((4, 3)));
     dists_1.insert(3, Some((0, 6)));
     dists_1.insert(4, Some((1, -4)));
+
     assert_eq!(bellman_ford(&graph, &1), Some(dists_1));
+
     let mut dists_2 = BTreeMap::new();
     dists_2.insert(0, Some((4, -3)));
     dists_2.insert(1, Some((2, -2)));
     dists_2.insert(2, None);
     dists_2.insert(3, Some((0, 4)));
     dists_2.insert(4, Some((1, -6)));
+
     assert_eq!(bellman_ford(&graph, &2), Some(dists_2));
+
     let mut dists_3 = BTreeMap::new();
     dists_3.insert(0, Some((4, -6)));
     dists_3.insert(1, Some((2, -5)));
     dists_3.insert(2, Some((3, -3)));
     dists_3.insert(3, None);
     dists_3.insert(4, Some((1, -9)));
+
     assert_eq!(bellman_ford(&graph, &3), Some(dists_3));
+
     let mut dists_4 = BTreeMap::new();
     dists_4.insert(0, Some((4, 3)));
     dists_4.insert(1, Some((2, 5)));
     dists_4.insert(2, Some((4, 7)));
     dists_4.insert(3, Some((0, 10)));
     dists_4.insert(4, None);
+
     assert_eq!(bellman_ford(&graph, &4), Some(dists_4));
   }
 
@@ -307,6 +318,7 @@ mod tests {
     add_edge(&mut graph, 3, 4, 9);
     add_edge(&mut graph, 4, 0, 3);
     add_edge(&mut graph, 4, 2, 7);
+
     assert_eq!(bellman_ford(&graph, &0), None);
     assert_eq!(bellman_ford(&graph, &1), None);
     assert_eq!(bellman_ford(&graph, &2), None);
@@ -315,6 +327,7 @@ mod tests {
   }
 }
 
+#[warn(dead_code)]
 fn main() {
   println!("bellman_ford");
 }
