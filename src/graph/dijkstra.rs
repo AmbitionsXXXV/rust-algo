@@ -1,10 +1,5 @@
 mod bellman_ford;
 
-// performs Dijsktra's algorithm on the given graph from the given start
-// the graph is a positively-weighted undirected graph
-//
-// returns a map that for each reachable vertex associates the distance and the predecessor
-// since the start has no predecessor but is reachable, map[start] will be None
 pub mod dijsktra {
   use std::cmp::Reverse;
   use std::collections::{BTreeMap, BinaryHeap};
