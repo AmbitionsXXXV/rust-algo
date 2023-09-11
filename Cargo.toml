@@ -115,5 +115,9 @@ path = "src/graph/bellman_ford.rs"
 name = "dijkstra"
 path = "src/graph/dijkstra.rs"
 
+[[bin]]
+name = "depth_first_search"
+path = "src/graph/depth_first_search.rs"
+
 [dependencies]
 rand = "0.8.5"
