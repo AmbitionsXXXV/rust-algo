@@ -140,7 +140,7 @@ pub fn manacher(s: String) -> String {
 
 #[cfg(test)]
 mod tests {
-  use super::manacher;
+  use super::*;
 
   #[test]
   fn get_longest_palindrome_by_manacher() {

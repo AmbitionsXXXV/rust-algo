@@ -1,37 +1,33 @@
-use crate::insertion_sort::insertion_sort_binary_search;
-
 pub fn main() {
   let mut arr = [7, 49, 73, 58, 30, 72, 44, 78, 23, 9];
   insertion_sort_binary_search(&mut arr);
   println!("{:?}", arr);
 }
 
-pub mod insertion_sort {
-  pub fn insertion_sort<T: PartialOrd>(arr: &mut [T]) {
-    // 从第二个元素开始排序
-    for i in 1..arr.len() {
-      // 找到 arr[i] 该插入的位置
-      let mut j = i;
+pub fn insertion_sort<T: PartialOrd>(arr: &mut [T]) {
+  // 从第二个元素开始排序
+  for i in 1..arr.len() {
+    // 找到 arr[i] 该插入的位置
+    let mut j = i;
 
-      while j > 0 && arr[j - 1] > arr[j] {
-        arr.swap(j - 1, j);
-        j -= 1;
-      }
+    while j > 0 && arr[j - 1] > arr[j] {
+      arr.swap(j - 1, j);
+      j -= 1;
     }
   }
+}
 
-  // 这里需要 T: Ord 是因为 binary_search() 方法的限制
-  pub fn insertion_sort_binary_search<T: Ord>(arr: &mut [T]) {
-    // 从第二个元素开始排序
-    for i in 1..arr.len() {
-      // 利用二分查找获取 arr[i] 应该插入的位置
-      let pos = arr[..i].binary_search(&arr[i]).unwrap_or_else(|pos| pos);
-      let mut j = i;
+// 这里需要 T: Ord 是因为 binary_search() 方法的限制
+pub fn insertion_sort_binary_search<T: Ord>(arr: &mut [T]) {
+  // 从第二个元素开始排序
+  for i in 1..arr.len() {
+    // 利用二分查找获取 arr[i] 应该插入的位置
+    let pos = arr[..i].binary_search(&arr[i]).unwrap_or_else(|pos| pos);
+    let mut j = i;
 
-      while j > pos {
-        arr.swap(j - 1, j);
-        j -= 1;
-      }
+    while j > pos {
+      arr.swap(j - 1, j);
+      j -= 1;
     }
   }
 }
@@ -39,7 +35,7 @@ pub mod insertion_sort {
 #[cfg(test)]
 mod tests {
   mod insertion_sort {
-    use crate::insertion_sort::insertion_sort;
+    use super::super::insertion_sort;
 
     #[test]
     fn test_empty_vec() {
@@ -77,7 +73,7 @@ mod tests {
   }
 
   mod insertion_sort_binary_search {
-    use crate::insertion_sort::insertion_sort_binary_search;
+    use super::super::insertion_sort_binary_search;
 
     #[test]
     fn test_empty_vec() {
