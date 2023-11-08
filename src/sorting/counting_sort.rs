@@ -1,5 +1,7 @@
 use std::ops::AddAssign;
 
+fn main() {}
+
 // 时间复杂度 O(n + maxval)
 // 空间复杂度 O(maxval)
 pub fn counting_sort(arr: &mut [u32], maxval: usize) {
@@ -73,5 +75,3 @@ mod test {
     assert!(is_sorted(&ve2));
   }
 }
-
-fn main() {}

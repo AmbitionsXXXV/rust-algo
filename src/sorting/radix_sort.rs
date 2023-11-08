@@ -1,3 +1,5 @@
+fn main() {}
+
 /// 对可变切片 `arr` 使用基数排序（radix sort）进行就地排序。
 ///
 /// # 算法描述 (Algorithm description)
@@ -65,9 +67,8 @@ pub fn radix_sort(arr: &mut [u64]) {
 
 #[cfg(test)]
 mod tests {
-  use crate::sorting::counting_sort::is_sorted;
-
   use super::radix_sort;
+  use crate::sorting::counting_sort::is_sorted;
 
   #[test]
   fn empty() {
@@ -90,5 +91,3 @@ mod tests {
     assert!(is_sorted(&v));
   }
 }
-
-fn main() {}

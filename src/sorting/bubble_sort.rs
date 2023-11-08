@@ -1,3 +1,9 @@
+pub fn main() {
+  let mut arr = [4, 1, 3, 1, 5, 2];
+  bubble_sort(&mut arr);
+  println!("{:?}", arr);
+}
+
 /* 冒泡排序 */
 pub fn bubble_sort_without_flag<T: PartialOrd>(arr: &mut [T]) {
   // 外循环：未排序区间为 [0, i]
@@ -89,10 +95,4 @@ mod tests {
       ]
     );
   }
-}
-
-pub fn main() {
-  let mut arr = [4, 1, 3, 1, 5, 2];
-  bubble_sort(&mut arr);
-  println!("{:?}", arr);
 }
