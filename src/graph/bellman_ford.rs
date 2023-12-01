@@ -1,103 +1,102 @@
-pub mod bellman_ford {
-  use std::collections::BTreeMap;
-  use std::ops::{Add, Neg};
+use std::collections::BTreeMap;
+use std::ops::{Add, Neg};
 
-  pub type Graph<V, E> = BTreeMap<V, BTreeMap<V, E>>;
+pub type Graph<V, E> = BTreeMap<V, BTreeMap<V, E>>;
 
-  /// Calculate the single-source shortest paths using the Bellman-Ford algorithm.
-  ///
-  /// This algorithm can handle graphs with negative-weight edges and can detect negative-weight cycles.
-  /// It starts from the given source node and iteratively relaxes the edges in the graph until it finds
-  /// the shortest paths from the source to all other nodes or detects a negative-weight cycle.
-  ///
-  /// # 参数 (Arguments)
-  ///
-  /// - `graph`: A BTreeMap representing an undirected graph, where keys are nodes and values are mappings
-  ///            of neighboring nodes and edge weights. The types for nodes and edges must satisfy the
-  ///            following requirements:
-  ///   - `V`: The type of nodes, must implement `Ord` and `Copy` traits.
-  ///   - `E`: The type of edge weights, must implement `Ord`, `Copy`, `Add<Output = E>`, `Neg<Output = E>`,
-  ///          and `std::ops::Sub<Output = E>` traits.
-  ///
-  /// - `start`: The source node from which to calculate the shortest paths. Its type should match the type
-  ///            of nodes in the graph (`V`).
-  ///
-  /// # 返回值 (Returns)
-  ///
-  /// If a negative-weight cycle is detected, `None` is returned. Otherwise, it returns a BTreeMap where each
-  /// reachable node is associated with its distance from the source and the predecessor node. The source node
-  /// has no predecessor, so `map[start]` will be `None`.
-  ///
-  /// # 复杂度 (Complexity)
-  ///
-  /// - 时间复杂度 (Time Complexity): O(V * E),
-  ///   where V is the number of nodes and E is the number of edges. The algorithm includes V-1 iterations,
-  ///   and each iteration involves traversing all edges. An additional iteration may be required for detecting
-  ///   negative-weight cycles.
-  ///
-  /// - 空间复杂度 (Space Complexity): O(V),
-  ///   used to store mappings of distances and predecessor nodes.
-  ///
-  /// # 使用示例 (Example)
-  ///
-  /// ```rust
-  /// use std::collections::BTreeMap;
-  ///
-  /// // Define a type for edge weights between nodes.
-  /// type EdgeWeight = i32;
-  ///
-  /// // Define a type for representing the graph.
-  /// type Graph = BTreeMap<char, BTreeMap<char, EdgeWeight>>;
-  ///
-  /// fn main() {
-  ///     let mut graph: Graph = BTreeMap::new();
-  ///     graph.insert('A', vec![('B', 5), ('C', 2)]);
-  ///     graph.insert('B', vec![('C', -1)]);
-  ///     graph.insert('C', vec![('D', 3)]);
-  ///
-  ///     let start_node = 'A';
-  ///     let shortest_paths = bellman_ford(&graph, &start_node);
-  ///
-  ///     match shortest_paths {
-  ///         Some(paths) => {
-  ///             for (node, path_info) in paths.iter() {
-  ///                 match path_info {
-  ///                     Some((prev_node, distance)) => {
-  ///                         println!("Node: {} Previous: {} Distance: {}", node, prev_node, distance);
-  ///                     },
-  ///                     None => {
-  ///                         println!("Node: {} Previous: None Distance: 0", node);
-  ///                     },
-  ///                 }
-  ///             }
-  ///         },
-  ///         None => {
-  ///             println!("Graph contains a negative weight cycle.");
-  ///         },
-  ///     }
-  /// }
-  /// ```
-  pub fn bellman_ford<
-    V: Ord + Copy,
-    E: Ord + Copy + Add<Output = E> + Neg<Output = E> + std::ops::Sub<Output = E>,
-  >(
-    graph: &Graph<V, E>,
-    start: &V,
-  ) -> Option<BTreeMap<V, Option<(V, E)>>> {
-    let mut ans: BTreeMap<V, Option<(V, E)>> = BTreeMap::new();
+/// Calculate the single-source shortest paths using the Bellman-Ford algorithm.
+///
+/// This algorithm can handle graphs with negative-weight edges and can detect negative-weight cycles.
+/// It starts from the given source node and iteratively relaxes the edges in the graph until it finds
+/// the shortest paths from the source to all other nodes or detects a negative-weight cycle.
+///
+/// # 参数 (Arguments)
+///
+/// - `graph`: A BTreeMap representing an undirected graph, where keys are nodes and values are mappings
+///            of neighboring nodes and edge weights. The types for nodes and edges must satisfy the
+///            following requirements:
+///   - `V`: The type of nodes, must implement `Ord` and `Copy` traits.
+///   - `E`: The type of edge weights, must implement `Ord`, `Copy`, `Add<Output = E>`, `Neg<Output = E>`,
+///          and `std::ops::Sub<Output = E>` traits.
+///
+/// - `start`: The source node from which to calculate the shortest paths. Its type should match the type
+///            of nodes in the graph (`V`).
+///
+/// # 返回值 (Returns)
+///
+/// If a negative-weight cycle is detected, `None` is returned. Otherwise, it returns a BTreeMap where each
+/// reachable node is associated with its distance from the source and the predecessor node. The source node
+/// has no predecessor, so `map[start]` will be `None`.
+///
+/// # 复杂度 (Complexity)
+///
+/// - 时间复杂度 (Time Complexity): O(V * E),
+///   where V is the number of nodes and E is the number of edges. The algorithm includes V-1 iterations,
+///   and each iteration involves traversing all edges. An additional iteration may be required for detecting
+///   negative-weight cycles.
+///
+/// - 空间复杂度 (Space Complexity): O(V),
+///   used to store mappings of distances and predecessor nodes.
+///
+/// # 使用示例 (Example)
+///
+/// ```rust
+/// use std::collections::BTreeMap;
+///
+/// // Define a type for edge weights between nodes.
+/// type EdgeWeight = i32;
+///
+/// // Define a type for representing the graph.
+/// type Graph = BTreeMap<char, BTreeMap<char, EdgeWeight>>;
+///
+/// fn main() {
+///     let mut graph: Graph = BTreeMap::new();
+///     graph.insert('A', vec![('B', 5), ('C', 2)]);
+///     graph.insert('B', vec![('C', -1)]);
+///     graph.insert('C', vec![('D', 3)]);
+///
+///     let start_node = 'A';
+///     let shortest_paths = bellman_ford(&graph, &start_node);
+///
+///     match shortest_paths {
+///         Some(paths) => {
+///             for (node, path_info) in paths.iter() {
+///                 match path_info {
+///                     Some((prev_node, distance)) => {
+///                         println!("Node: {} Previous: {} Distance: {}", node, prev_node, distance);
+///                     },
+///                     None => {
+///                         println!("Node: {} Previous: None Distance: 0", node);
+///                     },
+///                 }
+///             }
+///         },
+///         None => {
+///             println!("Graph contains a negative weight cycle.");
+///         },
+///     }
+/// }
+/// ```
+pub fn bellman_ford<
+  V: Ord + Copy,
+  E: Ord + Copy + Add<Output = E> + Neg<Output = E> + std::ops::Sub<Output = E>,
+>(
+  graph: &Graph<V, E>,
+  start: &V,
+) -> Option<BTreeMap<V, Option<(V, E)>>> {
+  let mut ans: BTreeMap<V, Option<(V, E)>> = BTreeMap::new();
 
-    ans.insert(*start, None);
+  ans.insert(*start, None);
 
-    for _ in 1..(graph.len()) {
-      for (u, edges) in graph {
-        let dist_u = match ans.get(u) {
-          Some(Some((_, d))) => Some(*d),
-          Some(None) => None,
-          None => continue,
-        };
+  for _ in 1..(graph.len()) {
+    for (u, edges) in graph {
+      let dist_u = match ans.get(u) {
+        Some(Some((_, d))) => Some(*d),
+        Some(None) => None,
+        None => continue,
+      };
 
-        for (v, d) in edges {
-          match ans.get(v) {
+      for (v, d) in edges {
+        match ans.get(v) {
             Some(Some((_, dist)))
             // if this is a longer path, do nothing
             if match dist_u {
@@ -131,36 +130,34 @@ pub mod bellman_ford {
               );
             }
           }
-        }
       }
     }
+  }
 
-    for (u, edges) in graph {
-      for (v, d) in edges {
-        match (ans.get(u), ans.get(v)) {
-          (Some(None), Some(None)) if *d > *d + *d => return None,
-          (Some(None), Some(Some((_, dv)))) if d < dv => return None,
-          (Some(Some((_, du))), Some(None)) if *du < -*d => return None,
-          (Some(Some((_, du))), Some(Some((_, dv)))) if *du + *d < *dv => return None,
-          (_, _) => {}
-        }
+  for (u, edges) in graph {
+    for (v, d) in edges {
+      match (ans.get(u), ans.get(v)) {
+        (Some(None), Some(None)) if *d > *d + *d => return None,
+        (Some(None), Some(Some((_, dv)))) if d < dv => return None,
+        (Some(Some((_, du))), Some(None)) if *du < -*d => return None,
+        (Some(Some((_, du))), Some(Some((_, dv)))) if *du + *d < *dv => return None,
+        (_, _) => {}
       }
     }
-
-    Some(ans)
   }
 
-  pub fn add_edge<V: Ord + Copy, E: Ord>(graph: &mut Graph<V, E>, v1: V, v2: V, c: E) {
-    graph.entry(v1).or_insert_with(BTreeMap::new).insert(v2, c);
-    graph.entry(v2).or_insert_with(BTreeMap::new);
-  }
+  Some(ans)
+}
+
+pub fn add_edge<V: Ord + Copy, E: Ord>(graph: &mut Graph<V, E>, v1: V, v2: V, c: E) {
+  graph.entry(v1).or_insert_with(BTreeMap::new).insert(v2, c);
+  graph.entry(v2).or_insert_with(BTreeMap::new);
 }
 
 #[cfg(test)]
 mod tests {
+  use super::*;
   use std::collections::BTreeMap;
-
-  use super::bellman_ford::{add_edge, bellman_ford, Graph};
 
   #[test]
   fn single_vertex() {

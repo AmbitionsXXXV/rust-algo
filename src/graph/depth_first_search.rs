@@ -160,9 +160,6 @@ mod tests {
 
   fn gen_graph(edges: Vec<(u32, u32)>, root: u32, objective: u32) -> Graph {
     let vertices = vec![1, 2, 3, 4, 5, 6, 7];
-    let edges = edges;
-    let root = root;
-    let objective = objective;
 
     let graph = Graph::new(
       vertices.into_iter().map(|v| v.into()).collect(),

@@ -1,7 +1,7 @@
 pub mod kth_smallest {
   use std::cmp::Ordering;
 
-  use rust_algorithm::sorting::quick_sort::quick_sort::partition;
+  use rust_algorithm::sorting::quick_sort::partition;
 
   /// 计算给定可变切片中的第 k 小元素。
   ///

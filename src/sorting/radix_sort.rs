@@ -1,5 +1,3 @@
-fn main() {}
-
 /// 对可变切片 `arr` 使用基数排序（radix sort）进行就地排序。
 ///
 /// # 算法描述 (Algorithm description)
@@ -91,3 +89,5 @@ mod tests {
     assert!(is_sorted(&v));
   }
 }
+
+fn main() {}

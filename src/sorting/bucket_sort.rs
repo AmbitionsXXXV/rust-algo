@@ -1,5 +1,3 @@
-pub fn main() {}
-
 // 时间复杂度 O(n + k), n: 输入数组的长度，k: 桶的数量
 // 空间复杂度 O(n + k), n: 输入数组的长度，k: 桶的数量
 pub fn bucket_sort(arr: &[usize]) -> Vec<usize> {
@@ -88,3 +86,5 @@ mod tests {
     assert!(is_sorted(&res));
   }
 }
+
+pub fn main() {}
